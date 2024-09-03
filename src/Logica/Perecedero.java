@@ -4,12 +4,13 @@ import Base.Producto;
 
 public class Perecedero extends Producto {
 
-  
     private int diasHastaCaducidad;
     private double temperaturaAlmacenamiento;
 
-    public Perecedero(String productoId, String productoNombre, double productoPrecio, int cantidadEnInventario, int diasHastaCaducidad, double temperaturaAlmacenamiento) {
-        super(productoId, productoNombre, productoPrecio, cantidadEnInventario);
+    public Perecedero() {}
+
+    public Perecedero(String productoId, String productoNombre, double productoPrecio, int cantidadEnInventario, int mesesGarantia, Perecedero perecedero, NoPerecedero artNoPerecedero) {
+        super(productoId, productoNombre, productoPrecio, cantidadEnInventario, perecedero, artNoPerecedero);
         this.diasHastaCaducidad = diasHastaCaducidad;
         this.temperaturaAlmacenamiento = temperaturaAlmacenamiento;
     }
@@ -32,8 +33,6 @@ public class Perecedero extends Producto {
 
     @Override
     public String toString() {
-        return "Perecedero{" + "diasHastaCaducidad=" + diasHastaCaducidad + ", temperaturaAlmacenamiento=" + temperaturaAlmacenamiento + '}';
+        return super.toString() + "\nDías de caducidad del producto: " + diasHastaCaducidad + "\nTemperatura de almacenamiento: " + temperaturaAlmacenamiento;
     }
-
-    
 }

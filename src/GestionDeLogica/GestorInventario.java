@@ -1,8 +1,10 @@
 package GestionDeLogica;
 
 import Base.Producto;
+import Logica.NoPerecedero;
 import java.util.ArrayList;
 import java.util.Scanner;
+import Logica.Perecedero;
 
 public class GestorInventario {
 
@@ -22,17 +24,15 @@ public class GestorInventario {
     }
 
     // Método para agregar un producto a la lista
-    public void agregarProducto(String productoId, String productoNombre, double productoPrecio, int cantidadEnInventario) {
-        Producto agregar = new Producto(productoId, productoNombre, productoPrecio, cantidadEnInventario);
-        listaProductos.add(agregar);  // Aquí es donde ocurría el error
+    public void agregarProducto(String productoId, String productoNombre, double productoPrecio, int cantidadEnInventario, Perecedero perecedero, NoPerecedero artNoPerecedero) {
+        Producto agregar = new Producto(productoId, productoNombre, productoPrecio, cantidadEnInventario, perecedero, artNoPerecedero);
+        listaProductos.add(agregar);
     }
 
     // Método para mostrar todos los productos en la lista
     public void mostrarProductos() {
         for (Producto producto : listaProductos) {
             producto.mostrarInformacion();
-           
-           
         }
     }
 
@@ -54,19 +54,34 @@ public class GestorInventario {
     public void modificarProducto(String productoId) {
         Scanner in = new Scanner(System.in);
         Producto producto = buscarProductoPorID(productoId);
+        Perecedero artPerecedero = new Perecedero();
+                    NoPerecedero artNoPerecedero = new NoPerecedero();
 
         if (producto != null) {
-            System.out.println("Producto encontrado. Ingrese los datos nuevos datos. \nNuevo nombre: ");
+            System.out.print("Producto encontrado. Ingrese los datos nuevos. \nNuevo nombre: ");
             String nuevoNombre = in.nextLine();
             producto.setProductoNombre(nuevoNombre);
 
-            System.out.println("Nuevo precio: ");
+            System.out.print("Nuevo precio: ");
             double nuevoPrecio = in.nextDouble();
             producto.setProductoPrecio(nuevoPrecio);
 
-            System.out.println("Nueva cantidad");
+            System.out.print("Nueva cantidad en el inventario");
             int nuevaCantidad = in.nextInt();
             producto.setCantidadEnInventario(nuevaCantidad);
+            
+            System.out.print("Nueva fecha de dias de caducidad");
+            int nuevaCaducidad = in.nextInt();
+            artPerecedero.setDiasHastaCaducidad(nuevaCaducidad);
+            
+            System.out.print("Nueva temperatura del producto");
+            double nuevaTemperatura = in.nextDouble();
+            artPerecedero.setTemperaturaAlmacenamiento(nuevaTemperatura);
+            
+            System.out.println("Nueva garantia");
+            int nuevaGarantia = in.nextInt();
+            artNoPerecedero.setMesesGarantia(nuevaGarantia);
+            
         } else {
             System.out.println("Producto no encontrado, intente de nuevo");
         }
@@ -85,5 +100,4 @@ public class GestorInventario {
             }
         }
     }
-
 }
