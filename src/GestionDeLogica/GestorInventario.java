@@ -87,17 +87,14 @@ public class GestorInventario {
         }
     }
 
-    public void eliminarProducto(String productoId) {
-        for (Producto delate : listaProductos) {
-            System.out.println("Ingrese ID del producto a eliminar");
-            if (productoId.equalsIgnoreCase(productoId)) {
-                listaProductos.remove(delate);
-                System.out.println("El producto fue eliminado exitosamente");
-                break;
-            } else {
-                System.out.println("EL ID del producto no fue encontrado");
-                break;
-            }
+      public void eliminarProducto(String productoId) {
+        Producto productoAEliminar = buscarProductoPorID(productoId);
+
+        if (productoAEliminar != null) {
+            listaProductos.remove(productoAEliminar);
+            System.out.println("El producto fue eliminado exitosamente");
+        } else {
+            System.out.println("El ID del producto no fue encontrado");
         }
     }
 }
