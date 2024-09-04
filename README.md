@@ -39,18 +39,11 @@ El proyecto se organiza en varias clases:
 Las clases `Producto`, `Perecedero`, y `NoPerecedero` representan distintos tipos de productos. Cada clase expone solo los atributos y métodos necesarios para trabajar con productos sin entrar en detalles técnicos complejos.
 
 ### 2. Encapsulamiento
-
-**Qué es:** El encapsulamiento protege los datos de los objetos y solo permite su manipulación a través de métodos específicos.
-
-**Aplicación en el Proyecto:**  
 Los atributos de las clases (`productoId`, `productoNombre`, etc.) son privados y se acceden mediante métodos públicos (`getters` y `setters`). Esto asegura que los datos solo se modifiquen de formas controladas, evitando inconsistencias y errores.
 
 ### 3. Herencia
-
-**Qué es:** La herencia permite crear nuevas clases a partir de clases existentes, reutilizando y extendiendo su funcionalidad.
-
 **Aplicación en el Proyecto:**  
-La clase `Producto` es la clase base para `Perecedero` y `NoPerecedero`. Esto permite que ambas clases hereden atributos y métodos de `Producto`, añadiendo solo lo que es específico para cada tipo de producto.
+La clase `Producto` es la clase padre para `Perecedero` y `NoPerecedero`. Esto permite que ambas clases hereden atributos y métodos de `Producto`. Perminiendonos usar sus atributos.
 
 ### 4. Polimorfismo
 
@@ -59,21 +52,6 @@ La clase `Producto` es la clase base para `Perecedero` y `NoPerecedero`. Esto pe
 **Aplicación en el Proyecto:**  
 Aunque no se utiliza extensamente en el código actual, podrías usar objetos de tipo `Perecedero` y `NoPerecedero` como si fueran simplemente `Producto`. Esto facilita trabajar con colecciones de productos sin preocuparse por las diferencias específicas de cada tipo.
 
-### 5. Principio de Responsabilidad Única
-
-**Qué es:** Cada clase debe tener una única responsabilidad o propósito claro.
-
-**Aplicación en el Proyecto:**  
-Cada clase está diseñada para una tarea específica:
-- `Producto` define la estructura básica de un producto.
-- `Perecedero` y `NoPerecedero` añaden características específicas a los productos.
-- `GestorInventario` maneja la lógica de gestión del inventario.
-- `MetodoMain` gestiona la interacción con el usuario a través del menú.
-
-### 6. Cohesión y Acoplamiento
-
-**Cohesión:** Las clases están altamente cohesionadas, es decir, se enfocan en una tarea clara y específica.  
-**Acoplamiento:** El acoplamiento entre las clases se mantiene bajo control, ya que las dependencias son lógicas y están bien manejadas, especialmente mediante la herencia y el uso de interfaces claras.
 
 ## Uso
 
